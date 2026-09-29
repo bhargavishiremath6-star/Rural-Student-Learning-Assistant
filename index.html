@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSLA - Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">RSLA</div>
+        <div class="welcome">Rural Student Learning Assistant</div>
+    </header>
+
+    <main class="dashboard">
+
+        <h1>Welcome, Student!</h1>
+        <p class="intro">Continue your learning journey</p>
+
+        <section class="cards">
+
+            <div class="card">
+                <div class="icon">📚</div>
+                <h2>My Lessons</h2>
+                <p>Learn lessons according to your subjects.</p>
+                <button onclick="window.location.href='lessons.html'">
+                    Open Lessons
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="icon">📝</div>
+                <h2>Practice Quiz</h2>
+                <p>Test your knowledge with topic-wise quizzes.</p>
+                <button onclick="window.location.href='quiz.html'">Start Quiz</button>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎯</div>
+                <h2>My Progress</h2>
+                <p>Check your scores and learning progress.</p>
+                <button onclick="window.location.href='progress.html'">
+                    View Progress
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="icon">💡</div>
+                <h2>Recommended</h2>
+                <p>Get topics recommended according to your performance.</p>
+                <button onclick="window.location.href='recommendations.html'">
+                    View Recommendations
+                </button>
+            </div>
+
+        </section>
+
+        <div id="message"></div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

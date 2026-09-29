@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSLA - Recommendations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">RSLA</div>
+    <div class="welcome">Recommendations</div>
+</header>
+
+<main class="dashboard">
+
+    <h1>Personalized Recommendations</h1>
+
+    <p class="intro">
+        Recommendations based on your quiz performance.
+    </p>
+
+    <div class="card">
+
+        <div class="icon">🎯</div>
+
+        <h2>Your Learning Recommendation</h2>
+
+        <p id="recommendation">
+            Complete a quiz to get personalized recommendations.
+        </p>
+
+        <br>
+
+        <button onclick="window.location.href='quiz.html'">
+            Take Quiz
+        </button>
+
+    </div>
+
+</main>
+
+<script>
+
+let score = localStorage.getItem("quizScore");
+
+if (score !== null) {
+
+    if (score < 2) {
+
+        document.getElementById("recommendation").innerHTML =
+            "<strong>Weak Topic: Fractions</strong><br><br>" +
+            "Your quiz score is " + score + " / 3.<br>" +
+            "You should review the Fractions lesson and practice more questions.";
+
+    } else {
+
+        document.getElementById("recommendation").innerHTML =
+            "<strong>Good Performance!</strong><br><br>" +
+            "Your quiz score is " + score + " / 3.<br>" +
+            "You are doing well in Fractions. Try another topic to continue learning.";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

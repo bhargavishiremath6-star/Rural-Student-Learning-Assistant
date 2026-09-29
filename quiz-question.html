@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSLA - Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">RSLA</div>
+    <div class="welcome">Practice Quiz</div>
+</header>
+
+<main class="dashboard">
+
+    <div class="card">
+
+        <h1 id="quizTitle">Quiz</h1>
+
+        <div id="questions"></div>
+
+        <br>
+
+        <button onclick="submitQuiz()">Submit Quiz</button>
+
+        <h2 id="score"></h2>
+
+        <div id="recommendation"></div>
+
+    </div>
+
+</main>
+
+<script>
+
+let subject =
+    new URLSearchParams(window.location.search).get("subject");
+
+let quizData = {
+
+    Mathematics: [
+        {
+            question: "What is the numerator in 3/5?",
+            options: ["3", "5", "8"],
+            answer: 0,
+            topic: "Fractions"
+        },
+        {
+            question: "Which fraction is equal to one half?",
+            options: ["2/4", "3/4", "1/3"],
+            answer: 0,
+            topic: "Fractions"
+        },
+        {
+            question: "What is 2 + 3?",
+            options: ["4", "5", "6"],
+            answer: 1,
+            topic: "Arithmetic"
+        }
+    ],
+
+    Science: [
+        {
+            question: "What force pulls objects towards Earth?",
+            options: ["Gravity", "Friction", "Magnetism"],
+            answer: 0,
+            topic: "Physics"
+        },
+        {
+            question: "What is the chemical formula for water?",
+            options: ["CO2", "H2O", "O2"],
+            answer: 1,
+            topic: "Chemistry"
+        },
+        {
+            question: "What is the basic unit of life?",
+            options: ["Atom", "Cell", "Organ"],
+            answer: 1,
+            topic: "Biology"
+        }
+    ],
+
+    English: [
+        {
+            question: "Which word is a verb?",
+            options: ["Run", "Beautiful", "Book"],
+            answer: 0,
+            topic: "Grammar"
+        },
+        {
+            question: "What is a synonym for happy?",
+            options: ["Sad", "Joyful", "Angry"],
+            answer: 1,
+            topic: "Vocabulary"
+        },
+        {
+            question: "Why is listening important?",
+            options: [
+                "It helps us understand others",
+                "It makes us sleep",
+                "It stops communication"
+            ],
+            answer: 0,
+            topic: "Communication"
+        }
+    ]
+
+};
+
+let questions = quizData[subject] || [];
+let selectedAnswers = [];
+
+document.getElementById("quizTitle").innerHTML =
+    subject + " Quiz";
+
+let questionHTML = "";
+
+questions.forEach(function(q, index) {
+
+    questionHTML += `
+        <div class="question">
+            <p>
+                <strong>Question ${index + 1}:</strong>
+                ${q.question}
+            </p>
+
+            ${q.options.map(function(option, optionIndex) {
+                return `
+                    <button
+                        onclick="selectAnswer(${index}, ${optionIndex})">
+                        ${option}
+                    </button>
+                `;
+            }).join("")}
+
+            <hr>
+        </div>
+    `;
+
+});
+
+document.getElementById("questions").innerHTML = questionHTML;
+
+
+function selectAnswer(questionIndex, answerIndex) {
+
+    selectedAnswers[questionIndex] = answerIndex;
+
+}
+
+
+function submitQuiz() {
+
+    let score = 0;
+
+    questions.forEach(function(q, index) {
+
+        if (selectedAnswers[index] === q.answer) {
+            score++;
+        }
+
+    });
+
+    localStorage.setItem("quizScore", score);
+    localStorage.setItem("quizSubject", subject);
+
+    document.getElementById("score").innerHTML =
+        "Your Score: " + score + " / " + questions.length;
+
+    let weakTopics = [];
+
+questions.forEach(function(q, index) {
+
+    if (selectedAnswers[index] !== q.answer) {
+        weakTopics.push(q.topic);
+    }
+
+});
+
+if (weakTopics.length > 0) {
+
+    let weakTopic = weakTopics[0];
+
+    localStorage.setItem("weakTopic", weakTopic);
+
+    document.getElementById("recommendation").innerHTML =
+        "<h3>🎯 Weak Topic: " + weakTopic + "</h3>" +
+        "<p>You need more practice in <strong>" +
+        weakTopic +
+        "</strong>.</p>" +
+        "<p>Recommended: Review the " +
+        weakTopic +
+        " lesson and take the quiz again.</p>";
+
+} else {
+
+    localStorage.removeItem("weakTopic");
+
+    document.getElementById("recommendation").innerHTML =
+        "<h3>⭐ Excellent Performance!</h3>" +
+        "<p>You answered all questions correctly.</p>" +
+        "<p>Try another subject to continue learning.</p>";
+
+}
+}
+
+</script>
+
+</body>
+</html>

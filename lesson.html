@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSLA - Lesson</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">RSLA</div>
+    <div class="welcome">My Lesson</div>
+</header>
+
+<main class="dashboard">
+
+    <div class="card lesson-content">
+
+        <h1 id="lessonTitle"></h1>
+
+        <p id="lessonDescription"></p>
+
+        <h2>Learn</h2>
+
+        <p id="lessonContent"></p>
+
+        <hr>
+
+        <h2>Quick Check</h2>
+
+        <p id="question"></p>
+
+        <button onclick="checkLessonAnswer()">
+            Show Answer
+        </button>
+
+        <p id="answer"></p>
+
+        <br>
+
+        <button onclick="window.location.href='quiz.html'">
+            Start Practice Quiz
+        </button>
+
+    </div>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

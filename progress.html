@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSLA - My Progress</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">RSLA</div>
+    <div class="welcome">My Progress</div>
+</header>
+
+<main class="dashboard">
+
+    <h1>My Learning Progress</h1>
+    <p class="intro">Track your learning and quiz performance.</p>
+
+    <section class="cards">
+
+        <div class="card">
+            <div class="icon">📊</div>
+            <h2>Quiz Score</h2>
+            <p id="quizScore">No quiz completed yet.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎯</div>
+            <h2>Weak Topic</h2>
+            <p id="weakTopic">Complete a quiz to identify weak topics.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📚</div>
+            <h2>Recommended</h2>
+            <p id="recommended">Your recommendations will appear here.</p>
+        </div>
+
+    </section>
+
+</main>
+<script>
+
+let savedScore = localStorage.getItem("quizScore");
+
+if (savedScore !== null) {
+
+    document.getElementById("quizScore").innerHTML =
+        savedScore + " / 3";
+
+    if (savedScore < 2) {
+
+        document.getElementById("weakTopic").innerHTML =
+            "Fractions";
+
+        document.getElementById("recommended").innerHTML =
+            "Review Fractions and take the quiz again.";
+
+    } else {
+
+        document.getElementById("weakTopic").innerHTML =
+            "No major weak topic";
+
+        document.getElementById("recommended").innerHTML =
+            "Continue practicing to improve your skills.";
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSLA - My Lessons</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">RSLA</div>
+        <div class="welcome">My Lessons</div>
+    </header>
+
+    <main class="dashboard">
+
+        <h1>Choose a Subject</h1>
+
+        <p class="intro">
+            Select a subject to start learning.
+        </p>
+
+        <section class="cards">
+
+            <div class="card">
+                <div class="icon">🔢</div>
+                <h2>Mathematics</h2>
+                <p>Learn numbers, algebra, geometry and more.</p>
+
+                <button onclick="openSubject('Mathematics')">
+                    Start Learning
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔬</div>
+                <h2>Science</h2>
+                <p>Explore physics, chemistry and biology.</p>
+
+                <button onclick="openSubject('Science')">
+                    Start Learning
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="icon">📖</div>
+                <h2>English</h2>
+                <p>Improve grammar, vocabulary and communication.</p>
+
+                <button onclick="openSubject('English')">
+                    Start Learning
+                </button>
+            </div>
+
+        </section>
+
+        <div id="message"></div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
